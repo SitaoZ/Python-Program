@@ -1,5 +1,5 @@
 # deal with file handle
-def parse_fastq(file_path)
+def parse_fastq(file_path):
     with open(file_path, 'r') as f:
         for entry in zip(f,f,f,f):
             ID, Seq, Desc, Qual = entry
