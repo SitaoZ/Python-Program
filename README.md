@@ -2,14 +2,15 @@
 The repository contains my scripts in bioinformatics.
 All the scripts are executed in python3
 
-### python speed 
-
+### 1. python speed 
+#### 1.1 成员判断
 ```python
 # python 加速技巧
 # 成员判断使用集合和字典速度较快O(1), 使用列表和元组慢O(n)
 a = set([1,2,3])
 1 i in a
 ```
+
 
 ### jupyter 
 
