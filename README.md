@@ -56,8 +56,18 @@ product = reduce(lambda x, y: x*y, [1,2,3,4])
 v = 19 
 value = "greate_than_zero" if v > 0 else "less_than_zero"
 ```
+### 2. python one-liner
+```python
+python -c "print unichr(234)"
+# split file
+python -c "import sys;[sys.stdout.write(' '.join(line.split(' ')[2:])) for line in sys.stdin]" < input.txt
+# csv to json
+python -c "import csv,json;print json.dumps(list(csv.reader(open('csv_file.csv'))))"
+```
 
-### 2. jupyter 
+[one-liner](https://wiki.python.org/moin/Powerful%20Python%20One-Liners)
+
+### 3. jupyter 
 
 ```bash
 $ # 远程登陆服务器jupyter
