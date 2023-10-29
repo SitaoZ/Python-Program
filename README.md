@@ -76,3 +76,36 @@ $ http://serverIP:8888/ # 客户端启动，即可编辑
 $ # 更改notebook目录
 $ vi .jupyter/jupyter_notebook_config.py # c.NotebookApp.notebook_dir = "xxx"
 ```
+
+### 4. python conding style
+良好的编码风格产生优质代码，让代码更加具有活力。自己都看不下去的代码，不要指望别人会看，大概率进垃圾箱。
+[PEP 8](https://peps.python.org/pep-0008/)
+#### 4.1 代码布局 Code Lay-out
+1. 每个缩进级别使用四个空格，不要使用tab。
+延续行应该使用Python隐式的圆括号、方括号和大括号内的行连接垂直对齐换行元素，或者使用悬挂缩进。当使用悬挂缩进时，
+应考虑以下几点:第一行不应该有参数，并且应该使用进一步的缩进来清楚地将其区分为延续行。
+2. 每行最长不超过79字符
+换行的首选方法是在括号、方括号和大括号内使用Python隐含的行延续。通过将表达式括在括号中，可以将长行分隔成多行。这些应该优先于使用反斜杠进行行延续。
+3. 二元操作符换行
+```python
+# Correct:
+# easy to match operators with operands
+income = (gross_wages
+          + taxable_interest
+          + (dividends - qualified_dividends)
+          - ira_deduction
+          - student_loan_interest)
+```
+4. 空白行的使用
+在类，函数，和逻辑块之间使用空白行，增强代码的可读性。
+5. 导入模块应该在单独的行上分别导入
+```python
+import os
+import sys
+```
+6. 引号
+字符串中，单引号和双引号是相同的，但是如果字符串中出现单引号或者双引号，应该选择另一个字符以免出现反斜杠。
+7. 表达式和语句中的空白
+8.函数return的一致性，if else都要有相应的返回值。
+9. 
+10. 
