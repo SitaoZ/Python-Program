@@ -49,6 +49,19 @@ product = reduce(lambda x, y: x*y, [1,2,3,4])
 
 ```
 
+```python
+# max/min
+max(stats, key=stats.get) # 返回字典中值最大对应的键
+min(stats, key=stats.get) # 返回字典中值最小对应的键
+
+# sorted
+list_to_be_sorted = [{'name':'Homer', 'age':39}, {'name':'Bart', 'age':10}]
+newlist = sorted(list_to_be_sorted, key=lambda d: d['name']) # 根据字典值排序
+from operator import itemgetter
+newlist = sorted(list_to_be_sorted, key=itemgetter('name'))
+
+```
+
 #### 1.6 三元操作符
 
 ```python
