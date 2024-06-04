@@ -2,7 +2,7 @@
 
 ## Phylogenetics
 
-* pairwise-distances
+### pairwise-distances
 - jukes_cantor.py
 - kimura_2_parameter.py
 - p_distance.py
