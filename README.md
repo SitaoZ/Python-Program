@@ -81,7 +81,7 @@ python -c "import csv,json;print json.dumps(list(csv.reader(open('csv_file.csv')
 [one-liner](https://wiki.python.org/moin/Powerful%20Python%20One-Liners)
 
 ### 3. jupyter 
-
+- 远程登录
 ```bash
 $ # 远程登陆服务器jupyter
 $ jupyter notebook --no-browser --port=8888 # 远程服务器上启动
@@ -89,6 +89,13 @@ $ http://serverIP:8888/ # 客户端启动，即可编辑
 $ # 更改notebook目录
 $ vi .jupyter/jupyter_notebook_config.py # c.NotebookApp.notebook_dir = "xxx"
 ```
+
+- 代码转换
+```bash
+$ # ipynb to py script
+$ jupyter nbconvert --to script plot_PCA.ipynb
+```
+
 
 ### 4. python conding style
 良好的编码风格产生优质代码，让代码更加具有活力。自己都看不下去的代码，不要指望别人会看，大概率进垃圾箱。
