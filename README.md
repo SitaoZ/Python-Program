@@ -96,15 +96,41 @@ $ # ipynb to py script
 $ jupyter nbconvert --to script plot_PCA.ipynb
 ```
 
-- jupyter lab 新一代jupyter
-```bash
-# >>> from jupyter_server.auth import passwd
-# >>> passwd()
+- jupyter lab 新一代jupyter   
+- step1 生成密码   
+```python
+>>> from jupyter_server.auth import passwd
+>>> passwd()
 # Enter password: 
-# Verify password: 
+# Verify password:
+```
+- step2 生成配置文件   
+```bash 
 $ jupyter lab --generate-config # 生成配置文件
 ```
+- step3 修改配置文件   
+```bash
+$ grep -v "^#" .jupyter/jupyter_lab_config.py | sed '/^$/d'
+c = get_config()  #noqa
+c.ExtensionApp.open_browser = False
+c.LabServerApp.open_browser = False
+c.LabApp.open_browser = False
+c.ServerApp.allow_remote_access = True
+c.ServerApp.ip = 'xxx.xxx.xxx.xxx'
+c.ServerApp.notebook_dir = '/data/zhusitao/project/'
+c.ServerApp.open_browser = False
+c.ServerApp.password = 'xxxxxxxxxxxx'
+c.ServerApp.password_required = True
+c.ServerApp.port = 8888
 
+```
+- step4 命令行启动   
+```bash
+$ jupyter lab --no-browser --port=8888
+```
+
+- step5 客户端web打开   
+http://xxx.xxx.xxx.xxx:8888/lab
 ### 4. python conding style
 良好的编码风格产生优质代码，让代码更加具有活力。自己都看不下去的代码，不要指望别人会看，大概率进垃圾箱。
 [PEP 8](https://peps.python.org/pep-0008/)
