@@ -96,6 +96,14 @@ $ # ipynb to py script
 $ jupyter nbconvert --to script plot_PCA.ipynb
 ```
 
+- jupyter lab 新一代jupyter
+```bash
+# >>> from jupyter_server.auth import passwd
+# >>> passwd()
+# Enter password: 
+# Verify password: 
+$ jupyter lab --generate-config # 生成配置文件
+```
 
 ### 4. python conding style
 良好的编码风格产生优质代码，让代码更加具有活力。自己都看不下去的代码，不要指望别人会看，大概率进垃圾箱。
