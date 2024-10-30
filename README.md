@@ -96,7 +96,7 @@ $ # ipynb to py script
 $ jupyter nbconvert --to script plot_PCA.ipynb
 ```
 
-- jupyter lab 新一代jupyter   
+- jupyter lab [新一代jupyter](https://jupyter.org/install)    
 - step1 生成密码   
 ```python
 >>> from jupyter_server.auth import passwd
