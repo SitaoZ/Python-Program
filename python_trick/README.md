@@ -82,13 +82,31 @@ def wc_count(filename):
 ### 扩展功能
 增加异常处理的完整版本：
 ```python
-def safe_count_lines(filename):
-    """带异常处理的行数统计"""
+import gzip
+import os
+
+def count_lines(filename):
+    """
+    统计文件行数（支持普通文件和gz压缩文件）
+    
+    参数：
+        filename (str): 文件路径，支持.gz扩展名的压缩文件
+        
+    返回：
+        int: 文件行数，出错返回-1
+    """
     try:
-        with open(filename, 'rb') as f:
+        # 自动检测文件类型
+        is_gzip = filename.lower().endswith('.gz')
+        
+        # 选择打开方式
+        opener = gzip.open if is_gzip else open
+        
+        with opener(filename, 'rb') as f:
             line_count = 0
             file_size = 0
-            buf_size = 1024 * 1024
+            last_char = b''
+            buf_size = 1024 * 1024  # 1MB缓冲区
             
             while True:
                 buf = f.read(buf_size)
@@ -96,17 +114,34 @@ def safe_count_lines(filename):
                     break
                 file_size += len(buf)
                 line_count += buf.count(b'\n')
+                last_char = buf[-1:] if buf else last_char
             
+            # 处理特殊情况
             if file_size == 0:
                 return 0
-            if buf and buf[-1] != 10:  # 10是\n的ASCII码
+            if last_char != b'\n':
                 line_count += 1
-            
+                
             return line_count
-    except FileNotFoundError:
-        print(f"错误：文件 {filename} 不存在")
+    
+    except (gzip.BadGzipFile, IOError) as e:
+        print(f"读取文件错误：{str(e)}")
         return -1
     except Exception as e:
-        print(f"读取文件时发生错误：{str(e)}")
+        print(f"未知错误：{str(e)}")
         return -1
+
+# 使用示例
+if __name__ == "__main__":
+    files = [
+        'normal.txt',       # 普通文本文件
+        'compressed.gz',    # gzip压缩文件
+        'empty_file.txt',   # 空文件
+        'no_newline.txt'    # 最后一行无换行符的文件
+    ]
+    
+    for f in files:
+        lines = count_lines(f)
+        if lines >= 0:
+            print(f"文件 {f} 的行数：{lines}")
 ```
