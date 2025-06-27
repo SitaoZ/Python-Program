@@ -271,3 +271,20 @@ def run_jellyfish(sequence_file, k, output_file):
 - **近似计数**：布隆过滤器（Bloom Filter）统计高频k-mer（允许误差）。
 
 根据需求选择合适方法，平衡速度、内存和准确性。
+
+
+
+### gzip 
+
+```python
+import gzip
+
+# 以二进制模式('rb')打开文件
+with gzip.open('example.txt.gz', 'rb') as f:
+    compressed_data = f.read()  # 读取压缩数据（字节流）
+    text_content = compressed_data.decode('utf-8')  # 解码为字符串
+
+# 写入txt文件
+with open('output.txt', 'w', encoding='utf-8') as txt_file:
+    txt_file.write(text_content)
+```
