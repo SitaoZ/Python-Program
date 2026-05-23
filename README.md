@@ -83,9 +83,28 @@ python -c "import csv,json;print json.dumps(list(csv.reader(open('csv_file.csv')
 ### 3. jupyter 
 - 远程登录
 ```bash
+# 首先查看服务器的端口
+sudo firewall-cmd --list-all
+# public (active)
+#  target: default
+#  icmp-block-inversion: no
+#  interfaces: eno8303
+#  sources: 
+#  services: cockpit dhcpv6-client ssh
+#  ports: 8080/tcp 8000/tcp
+#  protocols: 
+#  forward: yes
+#  masquerade: no
+#  forward-ports: 
+#  source-ports: 
+#  icmp-blocks: 
+#  rich rules: 
+
+
+
 $ # 远程登陆服务器jupyter
-$ jupyter notebook --no-browser --port=8888 # 远程服务器上启动
-$ http://serverIP:8888/ # 客户端启动，即可编辑
+$ jupyter notebook --no-browser --port=8080 # 远程服务器上启动
+$ http://serverIP:8080/ # 客户端启动，即可编辑
 $ # 更改notebook目录
 $ vi .jupyter/jupyter_notebook_config.py # c.NotebookApp.notebook_dir = "xxx"
 ```
@@ -121,16 +140,17 @@ c.ServerApp.notebook_dir = '/data/zhusitao/project/'
 c.ServerApp.open_browser = False
 c.ServerApp.password = 'xxxxxxxxxxxx'
 c.ServerApp.password_required = True
-c.ServerApp.port = 8888
+c.ServerApp.port = 8080
 
 ```
 - step4 命令行启动   
 ```bash
-$ jupyter lab --no-browser --port=8888
+$ jupyter lab --no-browser --port=8080
 ```
 
 - step5 客户端web打开   
-http://xxx.xxx.xxx.xxx:8888/lab
+http://xxx.xxx.xxx.xxx:8080/lab
+
 ### 4. python conding style
 良好的编码风格产生优质代码，让代码更加具有活力。自己都看不下去的代码，不要指望别人会看，大概率进垃圾箱。
 [PEP 8](https://peps.python.org/pep-0008/)
