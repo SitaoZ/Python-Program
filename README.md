@@ -207,3 +207,13 @@ func.__annotations__ # 获取注释对象，以字典的形式返回
 ```
 
 #### 4.6 函数return的一致性，if else都要有相应的返回值。
+
+#### 4.7 pip
+
+```bash
+# 列出全部安装的包
+pip list
+
+# 显示安装包的位置
+pip show torch
+```
